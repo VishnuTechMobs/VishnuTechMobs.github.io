@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <style>body {
+    font-family: sans-serif;
+    background-color: aquamarine;
+}
+input {
+    height: 40px;
+}</style>
+   
+    <body>
+        <h1>Binary Number Converter</h1>
+    Enter a decimal number:    <input type="number" placeholder="123" id="dn" onkeyup="binaryConvert();"/>
+    <div>
+        <p id="ans"></p>
+    </div>
+    
+     <style type ='text/javascript'>
+function binaryConvert() {
+  var x_str = document.getElementById('dn').value;
+  var x = Number(x_str);
+  var x_alert = Number(x_str)
+  var i = 0;
+  var mod;
+  var bin = [];
+  var binstr =''
+  
+    if (x > 1) {
+        while (x > 1) {
+            mod = x % 2;
+            bin[i] = mod;
+            x = Math.floor(x/2);
+            i++;
+        }
+        bin[i] = 1;
+    } else if (x == 1) {
+        bin[0] = 1;
+    } else {
+        bin[0] = 0;
+    }
+    
+    for (y= bin.length - 1; y >= 0; y--) {
+        binstr = binstr + bin[y];
+    }
+    document.getElementById('ans').innerHTML = "The binary form of "+ x_alert +" is "  + binstr;
+}
+
+
+    </style>
+    </body>
+</html>
