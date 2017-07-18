@@ -5,63 +5,12 @@
  
  
 <style type="text/css">
-html,body{
-  height:100%
-}
-
-.bg_heart {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden
- }
-
-.heart {
-    position: absolute;
-    top: -50%;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -m-transform: rotate(-45deg);
-    transform: rotate(-45deg)
- }
-
-.heart:before {
-    position: absolute;
-    top: -50%;
-    left: 0;
-    display: block;
-    content: "";
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    border-radius: 100%;
-}
-
-.heart:after {
-    position: absolute;
-    top: 0;
-    right: -50%;
-    display: block;
-    content: "";
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    border-radius: 100%;
-}
-
-@-webkit-keyframes love {
-  0%{top:110%}
-}
-@-moz-keyframes love {
-  0%{top:110%}
-}
-@-ms-keyframes love {
-  0%{top:110%}
-}
-@keyframes love {
-  0%{top:110%}
+body {
+  background: #B7004E;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 </style>
 	 </head>
@@ -71,28 +20,69 @@ html,body{
 <div class="bg_heart"></div>
 	 </body>
 	 <script type="text/javascript">
-	 $( "#header-plugin" ).load( function() {
-	$("a.back-to-link") 
+	var HeartsBackground = {
+  heartHeight: 60,
+  heartWidth: 64,
+  hearts: [],
+  heartImage: 'http://i58.tinypic.com/ntnw5.png',
+  maxHearts: 8,
+  minScale: 0.4,
+  draw: function() {
+    this.setCanvasSize();
+    this.ctx.clearRect(0, 0, this.w, this.h);
+    for (var i = 0; i < this.hearts.length; i++) {
+      var heart = this.hearts[i];
+      heart.image = new Image();
+      heart.image.style.height = heart.height;
+      heart.image.src = this.heartImage;
+      this.ctx.globalAlpha = heart.opacity;
+      this.ctx.drawImage (heart.image, heart.x, heart.y, heart.width, heart.height);
+    }
+    this.move();
+  },
+  move: function() {
+    for(var b = 0; b < this.hearts.length; b++) {
+      var heart = this.hearts[b];
+      heart.y += heart.ys;
+      if(heart.y > this.h) {
+        heart.x = Math.random() * this.w;
+        heart.y = -1 * this.heartHeight;
+      }
+    }
+  },
+  setCanvasSize: function() {
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+    this.w = this.canvas.width;
+    this.h = this.canvas.height;
+  },
+  initialize: function() {
+    this.canvas = $('#canvas')[0];
+
+    if(!this.canvas.getContext)
+      return;
+
+    this.setCanvasSize();
+    this.ctx = this.canvas.getContext('2d');
+
+    for(var a = 0; a < this.maxHearts; a++) {
+      var scale = (Math.random() * (1 - this.minScale)) + this.minScale;
+      this.hearts.push({
+        x: Math.random() * this.w,
+        y: Math.random() * this.h,
+        ys: Math.random() + 1,
+        height: scale * this.heartHeight,
+        width: scale * this.heartWidth,
+        opacity: scale
+      });
+    }
+
+    setInterval($.proxy(this.draw, this), 30);
+  }
+};
+
+$(document).ready(function(){
+  HeartsBackground.initialize();
 });
-
-var love = setInterval(function() {
-    var r_num = Math.floor(Math.random() * 40) + 1;
-    var r_size = Math.floor(Math.random() * 65) + 10;
-    var r_left = Math.floor(Math.random() * 100) + 1;
-    var r_bg = Math.floor(Math.random() * 25) + 100;
-    var r_time = Math.floor(Math.random() * 5) + 5;
-
-    $('.bg_heart').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;background:rgba(255," + (r_bg - 25) + "," + r_bg + ",1);-webkit-animation:love " + r_time + "s ease;-moz-animation:love " + r_time + "s ease;-ms-animation:love " + r_time + "s ease;animation:love " + r_time + "s ease'></div>");
-
-    $('.bg_heart').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%;background:rgba(255," + (r_bg - 25) + "," + (r_bg + 25) + ",1);-webkit-animation:love " + (r_time + 5) + "s ease;-moz-animation:love " + (r_time + 5) + "s ease;-ms-animation:love " + (r_time + 5) + "s ease;animation:love " + (r_time + 5) + "s ease'></div>");
-
-    $('.heart').each(function() {
-        var top = $(this).css("top").replace(/[^-\d\.]/g, '');
-        var width = $(this).css("width").replace(/[^-\d\.]/g, '');
-        if (top <= -100 || width >= 150) {
-            $(this).detach();
-        }
-    });
-}, 500);
 </script>
 </html>
