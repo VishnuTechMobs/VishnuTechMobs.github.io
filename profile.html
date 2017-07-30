@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <style>* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+*:focus{
+  outline: none;
+}
+body,
+html {
+  height: 100%;
+  font-family: Verdana;
+  font-size: 16px;
+}
+body {
+  margin: 0px;
+  padding: 10px;
+  overflow-x: hidden;
+}
+.profile-card {
+  -webkit-box-shadow: 0px 0px 20px #000;
+     -moz-box-shadow: 0px 0px 20px #000;
+          box-shadow: 0px 0px 20px #000;
+  margin: 60px auto 10px auto;
+  max-width: 320px;
+  position: relative;
+  width: 100%;
+}
+.profile-card .image {
+  background-color: #fff;
+  border-radius: 50%;
+  height: 110px;
+  left: 50%;
+  margin-left: -55px;
+  overflow: hidden;
+  padding: 5px;
+  position: absolute;
+  top: -55px;
+  width: 110px;
+}
+.profile-card .image img {
+  border: none;
+  border-radius: 50%;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.profile-card .image-shadow {
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 20px #000;
+     -moz-box-shadow: 0px 0px 20px #000;
+          box-shadow: 0px 0px 20px #000;
+  height: 110px;
+  position: absolute;
+  margin-left: -55px;
+  left: 50%;
+  margin-top: -55px;
+  top: -0%;
+  width: 110px;
+  z-index: -1;
+}
+.profile-card .header {
+  background-color: #160A43;
+  color: #fff;
+  padding: 10px;
+}
+.profile-card .header .title {
+  margin-bottom: 10px;
+  margin-top: 45px;
+  padding: 10px;
+}
+.profile-card .header .title span {
+  display: block;
+  padding: 10px;
+  padding-bottom: 0px;
+  text-align: center;
+}
+.profile-card .header .title span:nth-child(1) {
+  font-size: 28px;
+}
+.profile-card .header .title span:nth-child(2) {
+  font-size: 14px;
+  padding-top: 0px;
+}
+.profile-card .header .social-buttons {
+  display: table;
+  margin-bottom: 10px;
+  padding: 0px 10px;
+  width: 100%;
+}
+.profile-card .header .social-buttons .social-button {
+  display: table-cell;
+  text-align: center;
+}
+.profile-card .header .social-buttons .social-button i {
+  background-color: white;
+  border-radius: 50px;
+  color: #160A43;
+  cursor: pointer;
+  font-size: 20px;
+  opacity: .70;
+  padding: 5px 0px;
+  text-align: center;
+  width: 28px;
+}
+.profile-card .header .social-buttons .social-button i:hover {
+  opacity: 1;
+}
+.profile-card .content .tabs {
+  color: #fff;
+  display: table;
+  height: 47px;
+  width: 100%;
+}
+.profile-card .content .tabs .tab {
+  cursor: pointer;
+  display: table-cell;
+  font-size: 24px;
+  height: 47px;
+  padding: 10px;
+  text-align: center;
+}
+.profile-card .content .tabs .tab[status="active"] {
+  background-color: #fff;
+  color: #160A43;
+}
+.profile-card .content .tabs .tab:not([status="active"]) {
+  background-color: #FF6362;
+  color: #fff;
+}
+.profile-card .content .body {
+  height: 350px;
+  padding: 10px;
+}
+.profile-card .content .body [tab]:not([status="active"]) {
+  display: none;
+}
+h2 {
+  border-bottom: 1px solid #777;
+  font-weight: normal;
+  margin: 0px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+p {
+  margin-bottom: 10px;
+}
+a {
+  color: #FF6362;
+  cursor: pointer;
+  text-decoration: none;
+}
+form {
+  width: 100%;
+}
+input[type="text"],
+input[type="email"],
+input[type="submit"],
+textarea {
+  background: none;
+  background-color: #eee;
+  border: none;
+  color: #777;
+  display: block;
+  font-family: inherit!important;
+  font-size: 18px;
+  margin: 0px 0px 10px 0px;
+  padding: 10px;
+  width: 100%;
+}
+input[type="text"]:hover,
+input[type="email"]:hover,
+textarea:hover {
+  color: #000;
+}
+input[type="submit"] {
+  background-color: #FF6362;
+  color: #fff;
+  cursor: pointer;
+}
+textarea {
+  height: 132px;
+  resize: none;
+}
+.progress-bar {
+  background-color: #eee;
+  color: #fff;
+  display: block;
+  font-size: 18px;
+  height: 40px;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+}
+.progress-bar:not(:last-child) {
+  margin-bottom: 10px;
+}
+.progress-bar div {
+  background-color: #FF6362;
+  display: block;
+  height: 100%;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+}
+.progress-bar span {
+  position: absolute;
+}
+/* progress bar values */
+#html div {width: 100%;}
+#css div {width: 100%;}
+#js div {width: 75%;}
+#jq div {width: 70%;}
+#bs div {width: 100%;}
+</style>
+<script>
+$(document).ready(function(){
+  $("[data-tab]").click(function(){
+  $(this).attr("status", "active")
+  .siblings().attr("status", "inactive");
+  $tab = $(this).attr("data-tab");
+  $("[tab]").each(function(){
+   if ($(this).attr("tab") === $tab) {
+    $(this).attr("status", "active")
+    .siblings().attr("status", "inactive");
+   }
+  });
+ });
+ $("form").submit(function(e){
+   e.preventDefault();
+ });
+
+});
+</script>
+  <title>Profile Card</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+ </head>
+ <body>
+
+  <div class="profile-card">
+    <div class="image">
+      <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="profile-picture" />
+    </div>
+    <div class="image-shadow"></div>
+    <div class="header">
+      <div class="title">
+        <span>Vishnu</span>
+        <span>Blogger</span>
+      </div>
+      <div class="social-buttons">
+        <div class="social-button">
+          <i class="fa fa-facebook"></i>
+        </div>
+        <div class="social-button">
+          <i class="fa fa-twitter"></i>
+        </div>
+        <div class="social-button">
+          <i class="fa fa-linkedin"></i>
+        </div>
+        <div class="social-button">
+          <i class="fa fa-google-plus"></i>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="tabs">
+        <div class="tab" data-tab="about">
+          <i class="fa fa-user"></i>
+        </div>
+        <div class="tab" data-tab="skills">
+          <i class="fa fa-trophy"></i>
+        </div>
+        <div class="tab" data-tab="contact" status="active">
+          <i class="fa fa-envelope"></i>
+        </div>
+      </div>
+      <div class="body">
+        <div tab="about">
+          <h2>About</h2>
+          <p>Am <b>Vishnu Sivadas</b>, a passionate blogger, skilled android developer, amazing web developer . Now am the Founder and CEO of TECH MOBS one of the fast growing blogs . More over i am a blog researcher, I experiments with blogs, find new ways to make blogging successful and easy . Has a vast knowledge on Web development languages and loves android development too, this makes me active on both fields .</p>
+        
+        </div>
+        <div tab="skills">
+          <h2>Skills</h2>
+          <div id="html" class="progress-bar">
+            <div></div>
+            <span>HTML</span>
+          </div>
+          <div id="css" class="progress-bar">
+            <div></div>
+            <span>CSS</span>
+          </div>
+          <div id="js" class="progress-bar">
+            <div></div>
+            <span>JavaScript</span>
+          </div>
+          <div id="jq" class="progress-bar">
+            <div></div>
+            <span>jQuery</span>
+          </div>
+          <div id="bs" class="progress-bar">
+            <div></div>
+            <span>SEO</span>
+          </div>
+        </div>
+        <div tab="contact" status="active">
+          <h2>Contact Me</h2>
+          <form>
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <textarea placeholder="Message"></textarea>
+            <input type="submit" value="Send Message" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+ </body>
+</html>
