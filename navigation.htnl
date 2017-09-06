@@ -34,4 +34,50 @@ margin-top: 9px;
 margin:1px auto;
 text-align:center
 }
-.header_custom_fix{z-index:49;position:fixed;width:100%;height:55px;}.header_custom_rfile{width:100%;z-index:2}header_custom.header_custom,.header_custom{box-shadow:inset 0 0px 0 #FFF, inset 0 0px 0 #DADADB, 0 0 20px rgb(0, 0, 0);height:55px;margin:auto;width:100%;top:0;max-width:1280px}.clearfix{display:block}header_custom nav{background:#0098d3;    background-clip: content-box;color:#fff;width:39px;height:39px;display:block;float:left;margin-left: 8px;border-radius: 0.2em;margin-top: 9px;}
+.header_custom_fix {
+z-index:49;position:fixed;
+width:100%;
+height:55px;
+}
+.header_custom_rfile {
+width:100%;
+z-index:2
+}
+header_custom.header_custom,.header_custom {
+box-shadow:inset 0 0px 0 #FFF, inset 0 0px 0 #DADADB, 0 0 20px rgb(0, 0, 0);
+height:55px;
+margin:auto;
+width:100%;
+top:0;
+max-width:1280px
+}
+.clearfix {
+display:block
+}
+header_custom nav {
+background:#0098d3;    
+background-clip: content-box;color:#fff;
+width:39px;
+height:39px;
+display:block;
+float:left;
+margin-left: 8px;
+border-radius: 0.2em;
+margin-top: 9px;
+}
+<div style='width: 100%;height: 55px;padding-bottom: 30px;'>
+<div class='header_custom_fix' id='menubarhead'>
+<div class='header_custom_rfile'>
+<header_custom class='header_custom clearfix' id='menubarheadmain'>
+<nav id='menu'>
+<img onclick='openNav(&#39;left&#39;)' src='//files.revealedtricks4u.com/images/navbar_ico_new.png' style='cursor:pointer;width: 26px;height: 20px;float: left;position: relative;left: 17%;top: 22%;'/>
+</nav>
+<span class='logo-container track logo_txt' style='max-height:100%;max-width:100%;'>
+<img src='//files.revealedtricks4u.com/images/logo_10_38_08_20_2017.png' style='max-height:100%;max-width:100%'/>
+</span>
+<div class='notification' id='notiBell' onclick='openNav(&#39;right&#39;)' style='display:none;cursor:pointer;width: 20px;height: 20px;float: right;position: relative;right: 0.4em;top: 10%;'>
+</div>
+</header_custom>
+</div>
+</div>
+</div>
