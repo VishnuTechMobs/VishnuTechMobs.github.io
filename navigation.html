@@ -64,7 +64,72 @@ margin-left: 8px;
 border-radius: 0.2em;
 margin-top: 9px;
 }
+.sidenav a {
+  padding:8px 8px 8px 0px;
+  margin-left:36px;
+  text-decoration:none;
+  font:inherit;
+  font-size:1.3em;
+  color:#818181;
+  display:block;
+  transition:.3s
+  }
+  .sidenav a:hover,.offcanvas a:focus {
+    color:#f1f1f1
+  }
+  .sidenav .closebtn {
+    text-align:center;
+    position:relative;
+    top:0px;
+    font-size:36px;
+    margin-left:190px
+  }
+  #myLeftSidenav {
+    height:100%;
+    width:250px;
+    left:-250px;
+    position:fixed;
+    z-index:99999999;
+    top:0;
+    background-color:#000;
+    overflow-x:hidden;
+    transition:transform 1s;
+    padding-top:8px
+  }
+  #myRightSidenav
+  {
+    height:100%;
+    width:250px;
+    right:-250px;
+    position:fixed;
+    z-index:99999999;
+    top:0;
+    background-color:#000;
+    overflow-x:hidden;
+    transition:transform 1s;
+    padding-top:8px
+  }
+  #heading {
+    padding:8px 8px 8px 6%;
+    text-decoration:none;
+    font: inherit;
+    font-size:1.6em;
+    color:#fff;
+    background-color:#0098d3;
+    width:100%;
+    margin-bottom:10px;
+    margin-top:10px;
+    display:block;
+    transition:.3s
+  } 
 </style>
+  <!--notiTemplate-->
+<div id='notiChildMain' style='display:none;'><div id='notiContentChild' style='overflow:hidden;box-sizing:border-box;display:block;max-width:100%'><div id='heading' style='font-size:1.1em;max-width:90%;margin-left:0;word-wrap:break-word;display:inline-block;margin-bottom:0;text-overflow:ellipsis;width:100%;padding:0;overflow:hidden'><div id='notiTitle' style='font-size:1.1em;display:inline-block;width:81%;position:relative;margin-top:.6em;text-overflow:ellipsis;padding:0'></div><div id='notiCloseBtn' style='float:right;cursor:pointer;margin:0;color:#fff;font-size:2.2em;padding-top:.33em;background-color:#666;padding-bottom:.33em'>&times;</div></div><div id='notiContent' style='margin-left:.9em;margin-right:.85em;padding:15px;border:2px solid #0098d3;border-top:0'></div></div></div>
+<script>
+console.log=function(){};function normalize(f,h,g,e,i){return((i-e)*(f-h)/(g-h))+e}var functionHeaderFill=function(){var g=60;var f=document.getElementById("menubarheadmain");var j=0;var l=f.getBoundingClientRect().width;var e=window.innerHeight;var i=document.body.scrollTop>j?(document.body.scrollTop+e):document.body.scrollTop;var h=l-normalize(i,0,document.body.scrollHeight,0,l);console.log(h);var k="linear-gradient(to right, #0098d3 "+h+"px,#ecf0f1 "+((i>j&&h>0)?(h+g):h)+"px)";f.style.background=k};function isDev(){return window.location.href.indexOf("developerAd")!=-1}function openNav(f){var e=document.getElementById((f=="left")?"myLeftSidenav":"myRightSidenav");if(f=="left"){e.style.transform="translate(250px,0px)";e.style.webkitTransform="translate(250px,0px)";e.style.MozTransform="translate(250px,0px)";e.style.msTransform="translate(250px,0px)";e.style.OTransform="translate(250px,0px)"}else{e.style.transform="translate(-250px,0px)";e.style.webkitTransform="translate(-250px,0px)";e.style.MozTransform="translate(-250px,0px)";e.style.msTransform="translate(-250px,0px)";e.style.OTransform="translate(-250px,0px)"}document.getElementById("dimScreen").style.visibility="visible";ga("send","event",{eventCategory:"drawers",eventAction:"click",eventLabel:((f=="left")?"left_side_drawer":"right_side_drawer"),eventValue:1})}function closeNav(f){var e=document.getElementById((f=="left")?"myLeftSidenav":"myRightSidenav");e.style.transform="";e.style.webkitTransform="";e.style.MozTransform="";e.style.msTransform="";e.style.OTransform="";document.getElementById("dimScreen").style.visibility="hidden";ga("send","event",{eventCategory:"drawers",eventAction:"click",eventLabel:((f=="left")?"left_side_drawer":"right_side_drawer"),eventValue:0})}var a=document.getElementById("header-wrapper");a.parentNode.removeChild(a);var b=document.getElementById("top-nav");var c=document.createElement("dummyDiv");b.parentNode.replaceChild(c,b);var d=document.getElementById("mainHeaderNavi");c.insertAdjacentHTML("beforeend",d.innerHTML);function moveScroller(){var f=document.getElementById("menubarhead");var e=function(){functionHeaderFill()};window.onscroll=e;e();functionHeaderFill()}moveScroller();</script>
+<script>
+function onNotiCloseClick(b){var c=document.getElementById(b);var d=c.parentNode;c.style.opacity="1";c.style.transition="opacity 200ms linear";c.style.webkitTransition="opacity 200ms linear";c.style.MozTransition="opacity 200ms linear";c.style.msTransition="opacity 200ms linear";c.style.OTransition="opacity 200ms linear";c.style.opacity="0";window.setCookie("notifications",window.getCookie("notifications")+b+"&",34560);setTimeout(function(){d.removeChild(c);updateCount(d.children.length);if(d.children.length==0){d.innerHTML="<div style='font-size: 1.3em;'>None</div>"}},200)}function updateCount(b){var a=document.querySelector(".notification");a.setAttribute("data-count",b);a.classList.remove("notify");a.offsetWidth=a.offsetWidth;a.classList.add("notify");if(b!=0){a.classList.add("show-count")}else{a.classList.remove("notify");a.classList.remove("show-count")}}var sep="$@#";var mainSep="$@#!";var req=new XMLHttpRequest();req.onreadystatechange=function(){if(this.readyState==4){if(this.status==200){var g=this.responseText;if(g.trim()==""){return}var k=g.split(mainSep);if(k.length>0){var l=document.getElementById("notiBell");l.style.display="";var h="";var c=window.getCookie("notifications");var f=0;for(i=0;i<k.length;i++){var m=k[i].split(sep);var n=m[0];if(c.indexOf(n)!=-1){continue}f++;var e=m[1];var d=m[2];document.getElementById("notiTitle").innerHTML=d;document.getElementById("notiContent").innerHTML=e;var o=document.getElementById("notiCloseBtn");o.setAttribute("onclick",'onNotiCloseClick("'+n+'")');document.getElementById("notiContentChild").setAttribute("id",n);var b=document.getElementById("notiChildMain");h+=b.innerHTML;document.getElementById(n).setAttribute("id","notiContentChild")}updateCount(f);if(h!=""){var e=document.getElementById("notiMain");e.innerHTML=h}}}}};req.open("GET","//files.revealedtricks4u.com/php/noti"+(isDev()?"Adm":"")+".php",true);req.send();
+</script>
   </head>
 <!--left side drawer-->
 <div class='sidenav' id='myLeftSidenav'><a class='closebtn' href='javascript:void(0)' onclick='closeNav(&#39;left&#39;)'>&times;</a><div id='heading'>Navigation</div><a href='/'>Home</a><a href='/p/about-me.html'>About Us</a><a href='/p/contact-me.html'>Contact Us</a><a href='/p/privacy-policy.html'>Privacy Policy</a><div id='heading'>Social Media</div><a href='https://www.facebook.com/revealedtricks4u'><i class='fa fa-facebook' style='margin-right: 5px'></i>Facebook</a><a href='https://www.twitter.com/revealedtrick4u'><i class='fa fa-twitter' style='margin-right: 5px'></i>Twitter</a><a href='https://www.pinterest.com/revealedtricks/' style='margin-right: 5px'><i class='fa fa-pinterest' style='margin-right: 5px'></i>Pinterest</a><a href='https://www.google.com/+Revealedtricks4uForU'><i class='fa fa-google-plus'></i>Google+</a><a href='https://chat.whatsapp.com/CQoVkB8oTRj2lykbQwCDvB'><i class='fa fa-whatsapp'></i>Whatsapp</a><div style='clear:both;height:100px'></div></div>
