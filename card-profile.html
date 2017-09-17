@@ -1,3 +1,13 @@
+<script>
+(function() {
+  $('.btn').click(function() {
+    $(this).toggleClass('active');
+    return $('.box').toggleClass('open');
+  });
+
+}).call(this);
+
+  </script>
 <style>
 @import 'https://fonts.googleapis.com/css?family=Raleway';
 * {
