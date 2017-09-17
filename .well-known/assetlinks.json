@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.techmobs",
+    "sha256_cert_fingerprints":
+    ["80:FF:34:67:D2:C5:5E:5F:5D:B1:CD:3B:39:9D:40:03:89:CA:8E:B8:6E:D3:1A:AD:A5:4C:FA:D5:4D:91:46:D0"]
+  }
+}]
