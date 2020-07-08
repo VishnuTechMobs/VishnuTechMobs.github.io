@@ -1,0 +1,40 @@
+.font-alata{
+    font-family: 'Alata', sans-serif;
+}
+.header-small{
+    font-size: 2rem;
+}
+@media screen and (min-width: 600px) {
+    h1{
+        color: black;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header-small{
+        font-size: 1.7rem;
+        line-height: unset;
+    }
+    nav {
+        background-image: linear-gradient(to right, rgba(19, 136, 8, 0.5), rgba(255, 255, 255, 0.95), rgba(255, 153, 51, 0.5));
+    }
+    h1{
+        color: white;
+    }
+    main{
+        width: auto;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+    }
+    body {
+        background-position: center top;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMjI1IDE1MCIgd2lkdGg9IjEzNTAiIGhlaWdodD0iOTAwIj48cmVjdCB3aWR0aD0iMjI1IiBoZWlnaHQ9IjE1MCIgZmlsbD0iI2Y5MyIvPjxyZWN0IHdpZHRoPSIyMjUiIGhlaWdodD0iNTAiIHk9IjUwIiBmaWxsPSIjZmZmIi8+PHJlY3Qgd2lkdGg9IjIyNSIgaGVpZ2h0PSI1MCIgeT0iMTAwIiBmaWxsPSIjMTI4ODA3Ii8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEyLjUsNzUpIj48Y2lyY2xlIHI9IjIwIiBmaWxsPSIjMDA4Ii8+PGNpcmNsZSByPSIxNy41IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSByPSIzLjUiIGZpbGw9IiMwMDgiLz48ZyBpZD0iZCI+PGcgaWQ9ImMiPjxnIGlkPSJiIj48ZyBpZD0iYSI+PGNpcmNsZSByPSIwLjg3NSIgZmlsbD0iIzAwOCIgdHJhbnNmb3JtPSJyb3RhdGUoNy41KSB0cmFuc2xhdGUoMTcuNSkiLz48cGF0aCBmaWxsPSIjMDA4IiBkPSJNIDAsMTcuNSAwLjYsNyBDIDAuNiw3IDAsMiAwLDIgMCwyIC0wLjYsNyAtMC42LDcgTCAwLDE3LjUgeiIvPjwvZz48dXNlIHhsaW5rOmhyZWY9IiNhIiB0cmFuc2Zvcm09InJvdGF0ZSgxNSkiLz48L2c+PHVzZSB4bGluazpocmVmPSIjYiIgdHJhbnNmb3JtPSJyb3RhdGUoMzApIi8+PC9nPjx1c2UgeGxpbms6aHJlZj0iI2MiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPjwvZz48dXNlIHhsaW5rOmhyZWY9IiNkIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+PHVzZSB4bGluazpocmVmPSIjZCIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyMCkiLz48L2c+PC9zdmc+");
+    }
+    footer{
+        background-image: linear-gradient(to right, rgba(19, 136, 8, 0.5), rgba(255, 255, 255, 0.95), rgba(255, 153, 51, 0.5));
+    }
+}
+
